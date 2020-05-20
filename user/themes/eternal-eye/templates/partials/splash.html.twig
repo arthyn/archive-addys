@@ -1,0 +1,46 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: theme_config.default_lang }}" class="splash">
+<head>
+{% block head %}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AAAwards 2018 | AAF Acadiana</title>
+    {% include 'partials/metadata.html.twig' %}
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#231f20">
+    <meta name="theme-color" content="#231f20">
+    <link rel="canonical" href="{{ page.url(true, true) }}" />
+
+    {% block stylesheets %}
+        {% do assets.addCss('https://fonts.googleapis.com/css?family=Pathway+Gothic+One', 100) %}
+        {% do assets.addCss('theme://css-compiled/main.css', 99) %}
+    {% endblock %}
+    {{ assets.css() }}
+
+    {% block javascript %}
+        {% do assets.addJs('theme://js/requestAnimationFrame.js', {'priority': 100, 'group': 'bottom'}) %}
+        {% do assets.addJs('https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.3/vivus.min.js', {'priority': 99, 'group': 'bottom'}) %}
+        {% do assets.addJs('theme://js/splash-es6.js', {'priority': 98, 'group': 'bottom'}) %}
+        {% do assets.addJS('https://kit.fontawesome.com/347f58e3df.js', {'priority': 97, 'group': 'bottom', 'crossorigin': 'anonymous'}) %}
+    {% endblock %}
+    {{ assets.js() }}
+
+{% endblock head%}
+</head>
+<body id="top" class="{{ page.header.body_classes }} bg-near-black light-gray">
+    <main id="main-content" class="main cf h-100">
+    {% block body %}
+            {% block content %}{% endblock %}
+    {% endblock %}
+    </main>
+    {% block bottom %}
+        {{ assets.js('bottom') }}
+    {% endblock %}
+</body>
+</html>

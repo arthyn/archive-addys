@@ -1,0 +1,4 @@
+---
+media_order: 'ADDY_award-numbers-02.png,ADDY_award-numbers-03.png,ADDY_award-numbers-04.png,ADDY_award-numbers-05.png,ADDY_fb-icon.png,ADDY_judge1.jpg,ADDY_judge2.jpg,ADDY_judge3.jpg,ADDY_linkedin-icon.png,ADDY_past-winners-06.jpg,ADDY_past-winners-07.jpg,ADDY_past-winners-08.jpg,ADDY_past-winners-09.jpg,ADDY_sponsors_Action.png,ADDY_sponsors_BBR.png,ADDY_sponsors_channel-1.png,ADDY_sponsors_esprit.png,ADDY_tarot-icon-01.png,ADDY_tarot-icon-02.png,ADDY_tarot-icon-03.png,ADDY_tarot-icon-04.png,ADDY_tarot-icon-05.png,ADDY_tarot-icon-06.png,ADDY_tarot-icon-07.png,ADDY_tarot-icon-08.png,ADDY_web-icon.png,tarot-card-back-1.png,tarot-card-back-2.png,tarot-card-back-3.png,tarot-card-front-1.png,tarot-card-front-2.png,tarot-card-front-3.png,tarot-card-back-4.png,tarot-card-front-4.png,ADDY_ticket_tarot.png,ADDY_ticket_venue.png,ADDY_sponsors_lamar.png,ADDY_sponsors_lantec.png,ADDY_sponsors_mary.png,ADDY_sponsors_pixus.png,ADDY_sponsors-ohh_snap.png'
+---
+

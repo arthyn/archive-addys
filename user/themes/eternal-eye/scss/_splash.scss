@@ -1,0 +1,275 @@
+.splash {
+	height: 100%;
+	padding: 0;
+	font-family: $pathway;
+	body {
+		height: 100%;
+	}
+	body, input, textarea, select, button {
+		color: $light-gray;
+		font-size: 1rem;
+		font-family: $pathway;
+		font-weight: 300;
+	}
+	.clock-container {
+		margin-top: 200px;
+	}
+	.clock {
+		span {
+			position: relative;
+			display: inline-block;
+			float: left;
+		}
+	}
+	.bg-video {
+		min-width: 0;
+		min-height: 0;
+		width: 100%;
+		height: 100%;
+		opacity: .15;
+		filter: grayscale(100%);
+		object-fit: cover;
+	}
+	.intro-video {
+		opacity: 0;
+		z-index: 1001;
+		animation-delay: 3s;
+		filter: none;
+	}
+	.smoke-video {
+		opacity: 0;
+		z-index: 1002;
+		filter: none;
+	}
+	.header {
+		background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+	}
+	.order-logo {
+		top: 50%;
+		max-width: 45vw;
+		opacity: 0;
+		z-index: 1004;
+		> g {
+			opacity: .15;
+		}
+	}
+	.logo {
+		max-width: 9rem;
+		margin: 0 1rem;
+		img {
+			vertical-align: middle;
+		}
+		@media screen and (min-width: $nav-break) {
+			margin: 0 2rem;
+		}
+	}
+	.aaa-line {
+		font-size: calc(1rem + 1.5vw);
+	}
+	.enter-button {
+		position: absolute;
+		bottom: 5%;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 1005;
+		opacity: 0;
+		background-color: rgba($bg-black, .4); 
+		&:hover {
+			background-color: rgba($gold, .8);
+		}
+	}
+}
+
+.end-button {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 2000;
+}
+
+.end-sequence {
+	.lightbulb {
+		display: none;
+	}
+	.enter-button,
+	.intro-video {
+		animation: fadeIn .6s 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+	}
+	.smoke-video {
+	}
+	.clock {
+	 	overflow: hidden;
+		span {
+			animation: slideDown 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+		}
+
+		@for $i from 1 through 7 {
+			$delay: ($i - 1) * .2s;
+			span:nth-child(#{$i}) {
+				animation-delay: $delay;
+			}
+		}
+	}
+	.glitch {
+		&:before,
+		&:after {
+			content: none;
+		}
+	}
+	.logo, .aaa-line {
+		animation: fadeOut 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+	}
+}
+
+.load-brand {
+	.intro-video {
+		display: none;
+	}
+	.order-logo,
+	.smoke-video {
+		animation: fadeIn .3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+	}
+	.order-logo {
+		animation-delay: .2s;
+	}
+	.enter-button {
+		animation: fadeIn .3s 3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+	}
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    animation: loader 5s cubic-bezier(.8, 0, .2, 1) infinite;
+    z-index: 10000;
+	display: none;
+	&.active {
+		display: block;
+	}
+    #top {
+      border-top: 50px solid $gold;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      animation: top 5s linear infinite;
+      transform-origin: 50% 100%;
+      transform: scale(1);
+	}
+
+    #bottom {
+      border-bottom: 50px solid $gold;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      transform: scale(0);
+      transform-origin: 50% 100%;
+      animation: bottom 5s linear infinite;
+    }
+    #line {
+      border-left: 2px dotted $gold;
+      height: 0px;
+      width: 0px;
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      
+      animation: line 5s linear infinite;
+    }
+}
+@keyframes loader {
+  90% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+@keyframes bottom {
+  90% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes top {
+  90% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes line {
+  9% {
+    height: 49px;
+  }
+  100% {
+    height: 49px;
+  }
+}
+
+.time-number {
+	display: inline-block;
+	min-width: 17vw;
+}
+
+.glitch:before,
+.glitch:after {
+	content:attr(data-text);
+	position:absolute;
+	top:0;
+	display: block;
+	width: 100%;
+	color:white;
+	background:transparent;
+	mix-blend-mode: multiply;
+	overflow:hidden;
+	clip:rect(0,900px,0,0); 
+}
+.glitch:after{
+  left:2px;
+  text-shadow: (-1 * random(9))+px 0 $gold; 
+  animation:noise-anim 2s infinite linear alternate-reverse;
+}
+.glitch:before{
+  left:-2px;
+  text-shadow: random(5)+px 0 $teal;
+  animation:noise-anim-2 3s infinite linear alternate-reverse;
+}
+@keyframes noise-anim{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(300)+px,9999px,random(300)+px,0);
+    }
+  }
+}
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(400)+px,9999px,random(400)+px,0);
+    }
+  }
+}
+
+@keyframes slideDown {
+	to { 
+		transform: translateY(110%);
+		opacity: 0;
+	}
+}
+
+@keyframes fadeIn {
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	to {
+		opacity: 0;
+	}
+}

@@ -1,0 +1,227 @@
+@mixin upper-tracked-regular {
+	font-weight: 400;
+	letter-spacing: .25em;
+	text-transform: uppercase;
+}
+@mixin flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.huge {
+	font-size: 20vw; 
+}
+
+.rye {
+	font-family: $rye;
+}
+
+.nimbus {
+	font-family: $nimbus;
+}
+
+.proxima {
+	font-family: $proxima;
+}
+
+.goudy {
+	font-family: $goudy;
+}
+
+.gold {
+	color: $gold;
+}
+
+.dark-gold {
+	color: $dark-gold;
+}
+
+.bg-black {
+	background-color: $bg-black;
+}
+
+.f-super {
+	font-size: 8rem;
+}
+
+.fs {
+	@include font-smoothing;
+}
+
+.upperboldsmall {
+	font-size: 1.15rem;
+	font-weight: 700;
+	letter-spacing: .15em;
+	text-transform: uppercase;
+	-webkit-font-smoothing: antialiased;
+}
+
+.upper-tracked-bold-small {
+	font-size: .9rem;
+	font-weight: 700;
+	letter-spacing: .4em;
+	text-transform: uppercase;
+	-webkit-font-smoothing: antialiased;
+}
+
+.upper-tracked-regular {
+	@include upper-tracked-regular;
+}
+
+.mediumtext {
+	font-size: 1.35rem;
+	-webkit-font-smoothing: antialiased;
+}
+
+.time-number {
+	display: inline-block;
+	min-width: 17vw;
+}
+
+.break {
+	display: block;
+}
+
+.dash {
+	height: 2px;
+}
+
+.gray-separator {
+	margin: 3rem auto;
+	border: 1px solid #404041;
+	@media screen and (min-width: $break-lg) {
+		width: 120%;
+		margin: 3rem -10%;
+	}
+	&.no-margin {
+		margin: 0 auto;
+		@media screen and (min-width: $break-lg) {
+			margin: 0 -10%;
+		}
+	}
+}
+
+.no-margin {
+	margin: 0 auto;
+}
+
+.short-separator {
+	width: 200px;
+	margin: 3rem auto;
+	border: 1px solid #404041;
+}
+
+.tracked-uber {
+	letter-spacing: .5em;
+}
+
+.abs-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.plus-icon {
+	position: relative;
+	display: inline-block;
+	width: 1.75rem;
+	height: 1.75rem;
+	border: 1px solid $moon-gray;
+	border-radius: 50%;
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		display: block;
+		width: 1em;
+		height: 2px;
+		background-color: $moon-gray;
+		transition: transform .3s, background-color .4s;
+	}
+	&:before {
+		transform: translate(-50%,-50%);
+	}
+	&:after {
+		transform: translate(-50%,-50%) rotate(-90deg);
+	}
+}
+
+.up-down-arrows {
+	position: absolute;
+	top: 50%;
+	right: .5em;
+	display: block;
+	width: 1em;
+	height: 2em;
+	transform: translateY(-50%);
+	&:before,
+	&:after {
+		position: absolute;
+		font-size: .75rem;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	&:before {
+		content: '▲';
+		top: 20%;
+	}
+	&:after {
+		content: '▼';
+		top: 55%;
+	}
+}
+.glitch:before,
+.glitch:after {
+	content:attr(data-text);
+	position:absolute;
+	top:0;
+	display: block;
+	width: 100%;
+	color:white;
+	background:$near-black;
+	overflow:hidden;
+	clip:rect(0,900px,0,0); 
+}
+.glitch:after{
+  left:2px;
+  text-shadow: (-1 * random(9))+px 0 red; 
+  animation:noise-anim 2s infinite linear alternate-reverse;
+}
+.glitch:before{
+  left:-2px;
+  text-shadow: random(5)+px 0 blue; 
+  animation:noise-anim-2 3s infinite linear alternate-reverse;
+}
+@keyframes noise-anim{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(400)+px,9999px,random(400)+px,0);
+    }
+  }
+}
+
+.screen-reader-text {
+    border: 0;
+    clip: rect( 1px, 1px, 1px, 1px );
+    clip-path: inset( 50% );
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal;
+}

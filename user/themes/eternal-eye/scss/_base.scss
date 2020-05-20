@@ -1,0 +1,197 @@
+html {
+	padding: 10px;
+	@media screen and (min-width: $break-xs-sm) {
+		padding: 25px; 
+	}
+}
+body {
+	position: relative;
+	margin: 0;
+	min-height: 100%;
+	font-family: $nimbus;
+	font-weight: 400;
+	font-size: 1rem;
+	color: $text-gray;
+	background-color: $bg-black;
+	border-color: $gold;
+	perspective: 800;
+}
+main {
+	z-index: 1;
+}
+h1, h2, h3, h4, h5, h6, p, ul, ol, {
+	margin-top: 0;
+}
+.wf-loading  {
+	h1,h2,h3,h4,h5,h6,p,ul,li,a,legend,label,span {
+		visibility: hidden;
+	}
+}
+h1 {
+	margin-bottom: .25em;
+	font-size: 2rem;
+	font-weight: 400;
+	letter-spacing: .25em;
+	text-transform: uppercase;
+	color: #fff;
+	@media screen and (min-width: $break-sm) {
+		font-size: 2.5rem;
+	}
+	@media screen and (min-width: $break-med) {
+		font-size: 3.5rem;
+	}
+}
+h2, .section-headline {
+	margin-bottom: 0;
+	font-size: 1.125rem;
+	@include upper-tracked-regular;
+	@media screen and (min-width: $break-sm) {
+		font-size: 1.5rem;
+	}
+	@media screen and (min-width: $break-med) {
+		font-size: 1.875rem;
+	}
+}
+h3, .section-lead {
+	margin-bottom: .25rem;
+	font-size: .75rem;
+	color: #fff;
+	@include upper-tracked-regular;
+	@media screen and (min-width: $break-sm) {
+		font-size: 1rem;
+	}
+	@media screen and (min-width: $break-med) {
+		font-size: 1.25rem;
+	}
+}
+a {
+	color: $gray;
+	&:hover {
+		color: #fff;
+	}	
+}
+p {
+	font-family: $proxima;
+	font-size: 1rem;
+	@include font-smoothing;
+	@media screen and (min-width: $break-sm) {
+		font-size: 1.25rem; 
+	}
+}
+p, ul, ol, li {
+	line-height: 1.5;
+}
+ul {
+	padding-left: 1em;
+	ul {
+		padding-left: 1em;
+	}
+}
+li {
+	list-style: none;
+	&:before {
+		content: none;
+		float: left;
+		margin: -.55em 0 0 -.5em;
+		font-size: 2.25em;
+		font-weight: 400;
+		color: $red;
+		vertical-align: middle;
+	}
+	li {
+		&:before {
+			color: $dark-gray;
+		}
+	}
+}
+svg,
+img {
+	width: 100%;
+	height: auto; 
+}
+fieldset {
+	padding: 0;
+	border: none;
+}
+input,
+select {
+	padding: .5em 0;
+	@include font-smoothing;
+}
+
+input[type="email"] {
+	-moz-appearance: none;
+}
+
+input[type="phone"] {
+	-webkit-appearance: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+  }
+
+select {
+	position: relative;
+	border-radius: 0;
+	background-color: transparent;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+		&::-ms-expand {
+	    display: none;
+	}
+}
+label {
+	position: absolute;
+	top: -1.25em;
+	left: 0;
+	input:focus + &,
+	select:focus + & {
+		color: $red;
+	}
+	.input-blank:not(:focus) + & {
+		top: .5em;
+	}
+	@media #{$breakpoint-medium} {
+		.pl2-m & {
+			left: .5rem;
+		}
+	}
+}
+.field-group {
+	position: relative;
+	@extend .mt4;
+}
+button,
+.button {
+	display: inline-block;
+	padding: .5rem 1rem;
+	margin-top: 1rem;
+	font-size: 1rem;
+	border: none;
+	cursor: pointer;
+	clear: both;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border-radius: 0;
+	transition: background-color .3s;
+}
+.ghost-button {
+	font-family: $proxima;
+	letter-spacing: .1em;
+	color: #fff;
+	text-transform: uppercase;
+	border: .125rem solid $dark-gold;
+	&:hover {
+		background-color: rgba($gold, .8);
+	}
+}

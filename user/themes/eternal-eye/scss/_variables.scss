@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'goudysans_lt_mediumbold';
+    src: url('../fonts/itc-goudy-sans-lt-bold-webfont.woff2') format('woff2'),
+         url('../fonts/itc-goudy-sans-lt-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/*=========================BREAKPOINTS=========================================*/
+$break-xs: 480px;
+$break-xs-sm: 560px;
+$nav-break: 640px;
+$break-sm: 768px;
+$break-med: 960px;
+$break-lg: 1200px;
+$break-lg-xlg: 1400px;
+/*=========================COLOR===============================================*/
+$gold: #C6A846; //#c5a74f;
+$dark-gold: #9E843B;
+$bg-black: #090707; //#1e1e1f;
+$gray: #808080;
+$text-gray: #9c9c9c;
+$teal: #2bcccc;
+$herald: #f29cbb; 
+$creator:#df37a0;
+$seer: #c6a847;
+$scribe: #9360ff;
+$technician: #1099e5;
+$keeper: #2bcccc;
+$ancillary: #ef4136;
+$observer: #453ad6;
+
+/*=========================TYPOGRAPHY==========================================*/
+$pathway: 'Pathway Gothic One', sans-serif;
+$proxima: 'proxima-nova', Helvetica, Arial, sans-serif;
+$nimbus: 'nimbus-sans-extended', $proxima;
+$rye: 'Rye', serif;
+$goudy: 'goudysans_lt_mediumbold', $nimbus;
+
+/*=========================IMPORTANT MEASURES==================================*/
+$anim-duration: .8s;
+/*=========================MIXINS==============================================*/
+@mixin font-smoothing {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

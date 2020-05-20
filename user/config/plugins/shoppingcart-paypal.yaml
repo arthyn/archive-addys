@@ -1,0 +1,9 @@
+enabled: false
+test_mode: false
+payment:
+  methods:
+    paypal_express:
+      name: 'PayPal Express'
+      username: ''
+      password: ''
+      signature: ''

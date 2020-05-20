@@ -1,0 +1,27 @@
+name: Eternal Eye
+version: 0.1.0
+description: Addys 2018 Microsite Theme
+icon: rebel
+author:
+  name: Hunter Miller
+  email: hmiller@bbrcreative.com
+homepage: https://github.com/hunter-miller/grav-theme-eternal-eye
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
+bugs: https://github.com/hunter-miller/grav-theme-eternal-eye/issues
+readme: https://github.com/hunter-miller/grav-theme-eternal-eye/blob/develop/README.md
+license: MIT
+
+form:
+  validation: loose
+  fields:
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in Menu
+        highlight: 1
+        default: 1
+        options:
+          1: PLUGIN_ADMIN.ENABLED
+          0: PLUGIN_ADMIN.DISABLED
+        validate:
+          type: bool

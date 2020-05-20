@@ -1,0 +1,33 @@
+{
+  "name": "addys-grav",
+  "version": "0.0.1",
+  "author": "Hunter Miller",
+  "private": true,
+  "dependencies": {
+    "countdownjs": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-preset-env": "*",
+    "grunt": "^1.0.1",
+    "grunt-autoprefixer": "*",
+    "grunt-babel": "*",
+    "grunt-contrib-clean": "~1.1.0",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-watch": "*",
+    "grunt-newer": "*",
+    "grunt-sass": "^3.1.0",
+    "gsap": "^1.20.2",
+    "jshint-stylish": "*",
+    "jump.js": "^1.0.1",
+    "load-grunt-tasks": "*",
+    "node-sass": "^4.14.1",
+    "requestanimationframe": "0.0.23",
+    "tachyons": "^4.7.0",
+    "tachyons-sass": "^4.7.4",
+    "time-grunt": "*"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

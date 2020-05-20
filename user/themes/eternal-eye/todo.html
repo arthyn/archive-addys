@@ -1,0 +1,105 @@
+<div id="tarot-switcher" class="panel">
+    <div class="tarot-picker flex flex-wrap justify-around tc ttu">
+        <a v-for="card in tarotDeck" class="tarot-choice" :class="[card.name, card.name === currentCard ? 'active' : '', card.disabled ? 'disabled' : '']" :key="card.id" v-bind:href="'#/' + card.name">
+            <span class="border" :class="{'diamond-border': isDiamond(card)}"></span>
+            <img v-bind:src="'../images/ADDY_tarot-icon-0' + card.id + '.png'">
+            <p>{{ card.name }}</p>
+        </a>     
+    </div>
+    <div class="tarot-details flex flex-wrap mt4 white" :class="currentCard.name">
+        <div class="tarot-copy w-100 w-50-l pr5-l">
+            <h2 class="mb4 pt4">Who We Are</h2>
+            <div class="f2 goudy">{{ currentCard.title }}</div>
+            <p class="sub-title upper-tracked-regular">{{ currentCard.subtitle }}</p>
+            <p>{{ currentCard.description }}</p>
+        </div>
+        <div class="tarot-card-container w-100 w-50-l">
+            <div v-for="card in revealedCards" :id="card.name" class="tarot-card">
+                <img class="front" :src="'../images/tarot-card-front-' + card.id + '.png'" :alt="card.title">
+                <img class="back" :src="'../images/tarot-card-back-' + card.id + '.png'" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var tarotCards = [
+        {
+            id: '1',
+            name: 'creator',
+            title: 'The Creator',
+            subtitle: 'An Eye for Bullshit',
+            description: 'Thestral dirigible plums, Viktor Krum hexed memory charm Animagus Invisibility Cloak three-headed Dog. Half-Blood Prince Invisibility Cloak cauldron cakes, hiya Harry! Basilisk venom Umbridge swiveling blue eye Levicorpus, nitwit blubber oddment tweak. Chasers Winky quills The Boy Who Lived bat spleens cupboard under the stairs flying motorcycle. Sirius Black Holyhead Harpies, you’ve got dirt on your nose. Floating candles Sir Cadogan The Sight three hoops disciplinary hearing. Grindlewald pig’s tail Sorcerer\'s Stone biting teacup. Side-along dragon-scale suits Filch 20 points, Mr. Potter.',
+            disabled: false
+        },
+        {
+            id: '2',
+            name: 'scribe',
+            title: 'The Scribe',
+            subtitle: 'An Eye for Bullshit',
+            description: 'Thestral dirigible plums, Viktor Krum hexed memory charm Animagus Invisibility Cloak three-headed Dog. Half-Blood Prince Invisibility Cloak cauldron cakes, hiya Harry! Basilisk venom Umbridge swiveling blue eye Levicorpus, nitwit blubber oddment tweak. Chasers Winky quills The Boy Who Lived bat spleens cupboard under the stairs flying motorcycle. Sirius Black Holyhead Harpies, you’ve got dirt on your nose. Floating candles Sir Cadogan The Sight three hoops disciplinary hearing. Grindlewald pig’s tail Sorcerer\'s Stone biting teacup. Side-along dragon-scale suits Filch 20 points, Mr. Potter.',
+            disabled: false
+        },
+        {
+            id: '3',
+            name: 'seer',
+            title: 'The Seer',
+            subtitle: 'An Eye for Bullshit',
+            description: 'Thestral dirigible plums, Viktor Krum hexed memory charm Animagus Invisibility Cloak three-headed Dog. Half-Blood Prince Invisibility Cloak cauldron cakes, hiya Harry! Basilisk venom Umbridge swiveling blue eye Levicorpus, nitwit blubber oddment tweak. Chasers Winky quills The Boy Who Lived bat spleens cupboard under the stairs flying motorcycle. Sirius Black Holyhead Harpies, you’ve got dirt on your nose. Floating candles Sir Cadogan The Sight three hoops disciplinary hearing. Grindlewald pig’s tail Sorcerer\'s Stone biting teacup. Side-along dragon-scale suits Filch 20 points, Mr. Potter.',
+            disabled: false
+        },
+        {
+            id: '4',
+            name: 'ancillary',
+            title: 'The Ancillary',
+            subtitle: 'An Eye for Bullshit',
+            description: 'Thestral dirigible plums, Viktor Krum hexed memory charm Animagus Invisibility Cloak three-headed Dog. Half-Blood Prince Invisibility Cloak cauldron cakes, hiya Harry! Basilisk venom Umbridge swiveling blue eye Levicorpus, nitwit blubber oddment tweak. Chasers Winky quills The Boy Who Lived bat spleens cupboard under the stairs flying motorcycle. Sirius Black Holyhead Harpies, you’ve got dirt on your nose. Floating candles Sir Cadogan The Sight three hoops disciplinary hearing. Grindlewald pig’s tail Sorcerer\'s Stone biting teacup. Side-along dragon-scale suits Filch 20 points, Mr. Potter.',
+            disabled: true
+        }];
+
+
+    var app = new Vue({
+        el: '#tarot-switcher',
+        data: {
+            tarotDeck: tarotCards,
+            currentCard: tarotCards.find(function(element) {
+                        return element.name = 'creator';
+                    })
+        },
+        methods: {
+            isDiamond: function(card) {
+                return card.id % 2 === 0;
+            },
+            revealedCards: function() {
+                var cards = [];
+                var mapped = tarotDeck.filter(function(element) {
+                    if(!element.disabled) {
+                        cards.push(element);
+                    }
+                });
+
+                return cards;
+            }
+        }
+    });
+
+    // handle routing
+    function onHashChange () {
+      var card = window.location.hash.replace(/#\/?/, '');
+      var cardInDeck = app.tarotDeck.find(function(element) {
+            return element.name = card;
+        });
+      if (cardInDeck) {
+        app.currentCard = cardInDeck;
+      } else {
+        window.location.hash = '';
+        app.currentCard = app.tarotDeck.find(function(element) {
+            return element.name = 'creator';
+        });
+      }
+    }
+
+    window.addEventListener('hashchange', onHashChange);
+    onHashChange();
+</script>
+
+{% do assets.addJs('https://unpkg.com/vue@2.5.9/dist/vue.js', {'priority': 102, 'group': 'bottom'}) %}
